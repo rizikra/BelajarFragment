@@ -5,18 +5,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Main2Activity">
 
     <Button
-        android:id="@+id/btn_another_fragment"
+        android:id="@+id/btn_blank_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Go To Another Fragment"/>
+        android:text="Go To Blank Fragment"/>
+
+    <Button
+        android:id="@+id/btn_belajar_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Go To Belajar Fragment"
+        android:visibility="gone"/>
 
     <FrameLayout
         android:id="@+id/frame_fragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
     </FrameLayout>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
