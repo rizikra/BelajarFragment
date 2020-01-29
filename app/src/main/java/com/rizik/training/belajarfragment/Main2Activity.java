@@ -46,11 +46,12 @@ public class Main2Activity extends AppCompatActivity {
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 if(blankFragment.isAdded()){
                     fragmentTransaction.show(blankFragment);
-                    fragmentTransaction.remove(belajarFragment);
+                    fragmentTransaction.hide(belajarFragment); //Tujuannya diberi remove untuk menghilangkan belajar Fragment
                     Toast.makeText(getApplicationContext(), "Fragment sudah ditambahkan sebelumnya", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    fragmentTransaction.replace(R.id.frame_fragment, blankFragment);
+                    fragmentTransaction.add(R.id.frame_fragment, blankFragment);
+                    fragmentTransaction.hide(belajarFragment);
                 }
                 fragmentTransaction.addToBackStack("Belajar Fragment");
                 fragmentTransaction.commit();
@@ -62,10 +63,18 @@ public class Main2Activity extends AppCompatActivity {
         btnToBelajarFrag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Ketika button to belajar fragment di klik, akan pindah ke belajar fragment
+                //Ketika button go to another fragment di klik, akan pindah ke fragment lain
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.frame_fragment, belajarFragment);
-                //fragmentTransaction.add(R.id.frame_fragment, belajarFragment);
+                if(belajarFragment.isAdded()){
+                    fragmentTransaction.show(belajarFragment);
+                    fragmentTransaction.hide(blankFragment); //Tujuannya diberi remove untuk menghilangkan belajar Fragment
+                    Toast.makeText(getApplicationContext(), "Fragment sudah ditambahkan sebelumnya", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    fragmentTransaction.add(R.id.frame_fragment, belajarFragment);
+                    fragmentTransaction.hide(blankFragment);
+                }
+                fragmentTransaction.addToBackStack("Belajar Fragment");
                 fragmentTransaction.commit();
 
                 btnToBelajarFrag.setVisibility(View.GONE);
